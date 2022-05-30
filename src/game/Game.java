@@ -25,21 +25,19 @@ public class Game extends JFrame implements Runnable{
 		show();
 		
 		Thread th1 = new Thread(this);
+		Physics p1 = new Physics(this.objects, this.player);
 		th1.start();
 	}
 	
 	public void render() {
-		new Physics(this.objects, this.player);
-		/*
-		System.out.println("pos x:" + player.position.getX() + ", pos y:" + player.position.getY());
-		System.out.println("vel x:" + player.velocity.getX() + ", vel y:" + player.velocity.getY());
-		*/
 		repaint();
 	}
 	
 	@Override
 	public void paint(Graphics g) {
-		super.paint(g);
+		//super.paint(g);
+		g.setColor(Setting.BACKGROUND_COLOR);
+		g.fillRect(0, 0, Setting.WINDOW_WIDTH, Setting.WINDOW_HEIGHT);
 		g.setColor(player.getColor());
 		g.fillOval((int)player.getPosition().getX(), (int)player.getPosition().getY(), player.getDimension().getWidth(), player.getDimension().getHeight());
 		for(Object item : objects) {
@@ -56,7 +54,7 @@ public class Game extends JFrame implements Runnable{
 	public void run() {
 		while(true) {
 			try {
-				TimeUnit.MILLISECONDS.sleep(40);
+				TimeUnit.MILLISECONDS.sleep(Setting.REFRESH_RATE);
 			} 
 			catch (InterruptedException e) {
 				e.printStackTrace();
