@@ -13,26 +13,13 @@ import javax.swing.JPanel;
 public class Game extends JFrame implements Runnable{
 	private LinkedList<Object> objects = new LinkedList<Object>();
 	private Player player;
-	JPanel canvas;
+	Canvas canvas;
 	
 	public Game() {
 		setTitle("Platform Game");
 		setBounds(Setting.WINDOW_POSITION_X, Setting.WINDOW_POSITION_Y, Setting.WINDOW_WIDTH, Setting.WINDOW_HEIGHT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		add(canvas = new JPanel() {
-			@Override
-			public void paint(Graphics g) {
-				//super.paint(g);
-				g.setColor(Setting.BACKGROUND_COLOR);
-				g.fillRect(0, 0, Setting.WINDOW_WIDTH, Setting.WINDOW_HEIGHT);
-				g.setColor(player.getColor());
-				g.fillOval((int)player.getPosition().getX(), (int)player.getPosition().getY(), player.getDimension().getWidth(), player.getDimension().getHeight());
-				for(Object item : objects) {
-					g.setColor(item.getColor());
-					g.fillRect((int)item.getPosition().getX(), (int)item.getPosition().getY(), item.getDimension().getWidth(), item.getDimension().getHeight());
-				}
-			}
-		}, BorderLayout.CENTER);
+		
 		player = new Player(new Position(50, 300), new Dimension(30, 30));
 		player.setColor(new Color(0, 100, 200));
 		player.moveSpeed.setSpeed(6);
@@ -44,6 +31,10 @@ public class Game extends JFrame implements Runnable{
 		objects.add(new Object(new Position(0, 190), new Dimension(50, 5), new Color(160, 25, 0)));
 		objects.add(new Object(new Position(0, 90), new Dimension(800, 5), new Color(180, 20, 0)));
 		objects.add(new Object(new Position(900, 300), new Dimension(50, 15), new Color(200, 15, 0)));
+		
+		canvas = new Canvas(objects, player);
+		add(canvas, BorderLayout.CENTER);
+		
 		addKeyListener(new PlayerControl(this.player));
 		show();
 		
@@ -53,21 +44,7 @@ public class Game extends JFrame implements Runnable{
 	}
 	
 	public void render() {
-		//repaint();
 		canvas.repaint();
-	}
-	
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-		g.setColor(Setting.BACKGROUND_COLOR);
-		g.fillRect(0, 0, Setting.WINDOW_WIDTH, Setting.WINDOW_HEIGHT);
-		g.setColor(player.getColor());
-		g.fillOval((int)player.getPosition().getX(), (int)player.getPosition().getY(), player.getDimension().getWidth(), player.getDimension().getHeight());
-		for(Object item : objects) {
-			g.setColor(item.getColor());
-			g.fillRect((int)item.getPosition().getX(), (int)item.getPosition().getY(), item.getDimension().getWidth(), item.getDimension().getHeight());
-		}
 	}
 
 	public static void main(String[] args) {
