@@ -7,19 +7,21 @@ import javax.swing.JPanel;
 
 public class Canvas extends JPanel{
 	private LinkedList<Object> objects;
-	private Player player;
+	private LinkedList<Player> players;
 	
-	public Canvas(LinkedList<Object> objects, Player player) {
+	public Canvas(LinkedList<Object> objects, LinkedList<Player> players) {
 		this.objects = objects;
-		this.player = player;
+		this.players = players;
 	}
 	
 	@Override
 	public void paint(Graphics g) {				
 		g.setColor(Setting.BACKGROUND_COLOR);
 		g.fillRect(0, 0, Setting.WINDOW_WIDTH, Setting.WINDOW_HEIGHT);
-		g.setColor(player.getColor());
-		g.fillOval((int)player.getPosition().getX(), (int)player.getPosition().getY(), player.getDimension().getWidth(), player.getDimension().getHeight());
+		for(Player item : players) {
+			g.setColor(item.getColor());
+			g.fillOval((int)item.getPosition().getX(), (int)item.getPosition().getY(), item.getDimension().getWidth(), item.getDimension().getHeight());
+		}
 		for(Object item : objects) {
 			g.setColor(item.getColor());
 			g.fillRect((int)item.getPosition().getX(), (int)item.getPosition().getY(), item.getDimension().getWidth(), item.getDimension().getHeight());

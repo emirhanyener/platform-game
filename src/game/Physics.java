@@ -26,8 +26,9 @@ public class Physics extends Thread implements Runnable{
 			for(Object item : objects) {
 				if(character.getPosition().getX() + character.dimension.getWidth() > item.getPosition().getX() && character.getPosition().getX() < item.getPosition().getX() + item.dimension.getWidth() && character.getPosition().getY() + character.velocity.getY() + character.dimension.getHeight() > item.getPosition().getY() && character.getPosition().getY() + character.velocity.getY() < item.getPosition().getY() + item.getDimension().getHeight())
 				{	
-					character.position.setY(item.position.getY() - character.dimension.getHeight());
-					character.velocity.setY(Setting.GRAVITY);
+					if(character.getPosition().getY() + character.velocity.getY() < item.getPosition().getY())
+						character.position.setY(item.position.getY() - character.dimension.getHeight());
+					character.velocity.setY(0);
 					if(character.jump) {
 						character.velocity.setY(-character.jumpSpeed.getSpeed());
 						character.jump = false;

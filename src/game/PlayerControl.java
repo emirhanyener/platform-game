@@ -2,34 +2,40 @@ package game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.LinkedList;
 
 public class PlayerControl implements KeyListener{
-	public Player player;
+	private LinkedList<Player> players;
 	
-	public PlayerControl(Player player) {
-		this.player = player;
+	public PlayerControl(LinkedList<Player> players) {
+		this.players = players;
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			this.player.velocity.setX(player.moveSpeed.getSpeed());
+			for(Player item : players)
+				item.velocity.setX(item.moveSpeed.getSpeed());
 		}
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			this.player.velocity.setX(-player.moveSpeed.getSpeed());
+			for(Player item : players)
+				item.velocity.setX(-item.moveSpeed.getSpeed());
 		}
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
-			this.player.jump = true;
+			for(Player item : players)
+				item.jump = true;
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			this.player.velocity.setX(0);
+			for(Player item : players)
+				item.velocity.setX(0);
 		}
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			this.player.velocity.setX(0);
+			for(Player item : players)
+				item.velocity.setX(0);
 		}
 	}
 
