@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 public class Game extends JFrame implements Runnable{
 	private LinkedList<Object> objects = new LinkedList<Object>();
 	private LinkedList<Player> players = new LinkedList<Player>();
-	Canvas canvas;
+	private Canvas canvas;
 	
 	public Game() {
 		setTitle("Platform Game");
@@ -38,7 +38,7 @@ public class Game extends JFrame implements Runnable{
 		objects.add(new Object(new Position(0, 90), new Dimension(800, 5), new Color(180, 20, 0)));
 		objects.add(new Object(new Position(900, 300), new Dimension(50, 15), new Color(200, 15, 0)));
 		
-		canvas = new Canvas(objects, players);
+		canvas = new Canvas(objects, players, new DynamicCamera(player1, new Position(0, -100)));
 		add(canvas, BorderLayout.CENTER);
 		
 		addKeyListener(new PlayerControl(players));
