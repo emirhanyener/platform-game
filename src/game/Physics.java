@@ -24,6 +24,11 @@ public class Physics extends Thread implements Runnable{
 				e.printStackTrace();
 			}
 			for(Object item : objects) {
+				if(item.isAbstract())
+					if(character.getPosition().getX() + character.dimension.getWidth() + 1 > item.getPosition().getX() && character.getPosition().getX() - 5 < item.getPosition().getX() + item.dimension.getWidth() && character.getPosition().getY() + character.velocity.getY() + character.dimension.getHeight() > item.getPosition().getY() && character.getPosition().getY() + character.velocity.getY() < item.getPosition().getY() + item.getDimension().getHeight()) {
+						item.Triggered();
+						continue;
+					}
 				if(character.getPosition().getX() + character.dimension.getWidth() > item.getPosition().getX() && character.getPosition().getX() < item.getPosition().getX() + item.dimension.getWidth() && character.getPosition().getY() + character.velocity.getY() + character.dimension.getHeight() > item.getPosition().getY() && character.getPosition().getY() + character.velocity.getY() < item.getPosition().getY() + item.getDimension().getHeight())
 				{	
 					if(character.getPosition().getY() + character.velocity.getY() < item.getPosition().getY())
