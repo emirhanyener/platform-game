@@ -5,8 +5,7 @@ public class Position {
 	private float Y;
 	
 	public Position() {
-		this.X = 0;
-		this.Y = 0;
+		resetPosition();
 	}
 	
 	public Position(float X, float Y) {
@@ -40,5 +39,10 @@ public class Position {
 	}
 	public void addY(float Y) {
 		this.Y += Y;
+	}
+	
+	public void resetPosition() {
+		this.X = 0;
+		this.Y = 0;
 	}
 }

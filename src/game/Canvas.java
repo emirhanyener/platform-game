@@ -17,7 +17,7 @@ public class Canvas extends JPanel{
 	}
 	
 	@Override
-	public void paint(Graphics g) {				
+	public void paint(Graphics g) {
 		g.setColor(Setting.BACKGROUND_COLOR);
 		g.fillRect(0, 0, Setting.WINDOW_WIDTH, Setting.WINDOW_HEIGHT);
 		for(Player item : players) {
