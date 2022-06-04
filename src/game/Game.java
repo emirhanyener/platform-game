@@ -25,13 +25,8 @@ public class Game extends JFrame implements Runnable{
 		player1.setColor(new Color(0, 100, 200));
 		player1.moveSpeed.setSpeed(6);
 		player1.jumpSpeed.setSpeed(16f);
-		/*
-		Player player2 = new Player(new Position(600, 300), new Dimension(30, 30));
-		player2.setColor(new Color(0, 150, 200));
-		player2.moveSpeed.setSpeed(3);
-		player2.jumpSpeed.setSpeed(16f);*/
 		players.add(player1);
-		//players.add(player2);
+
 		objects.add(new Object(new Position(0, 500), new Dimension(Setting.WINDOW_WIDTH, Setting.WINDOW_HEIGHT), new Color(0, 255, 0)));
 		objects.add(new Object(new Position(300, 450), new Dimension(100, 50), new Color(100, 40, 0)));
 		objects.add(new Object(new Position(500, 390), new Dimension(100, 50), new Color(120, 35, 0)));

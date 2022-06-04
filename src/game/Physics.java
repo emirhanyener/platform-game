@@ -25,13 +25,13 @@ public class Physics extends Thread implements Runnable{
 			}
 			for(Object item : objects) {
 				if(item.isAbstract())
-					if(character.getPosition().getX() + character.dimension.getWidth() + 1 > item.getPosition().getX() && character.getPosition().getX() - 5 < item.getPosition().getX() + item.dimension.getWidth() && character.getPosition().getY() + character.velocity.getY() + character.dimension.getHeight() > item.getPosition().getY() && character.getPosition().getY() + character.velocity.getY() < item.getPosition().getY() + item.getDimension().getHeight()) {
+					if(character.position.getX() + character.dimension.getWidth() + 1 > item.position.getX() && character.position.getX() - 5 < item.position.getX() + item.dimension.getWidth() && character.position.getY() + character.velocity.getY() + character.dimension.getHeight() > item.position.getY() && character.position.getY() + character.velocity.getY() < item.position.getY() + item.dimension.getHeight()) {
 						item.Triggered();
 						continue;
 					}
-				if(character.getPosition().getX() + character.dimension.getWidth() > item.getPosition().getX() && character.getPosition().getX() < item.getPosition().getX() + item.dimension.getWidth() && character.getPosition().getY() + character.velocity.getY() + character.dimension.getHeight() > item.getPosition().getY() && character.getPosition().getY() + character.velocity.getY() < item.getPosition().getY() + item.getDimension().getHeight())
+				if(character.position.getX() + character.dimension.getWidth() > item.position.getX() && character.position.getX() < item.position.getX() + item.dimension.getWidth() && character.position.getY() + character.velocity.getY() + character.dimension.getHeight() > item.position.getY() && character.position.getY() + character.velocity.getY() < item.position.getY() + item.dimension.getHeight())
 				{	
-					if(character.getPosition().getY() + character.velocity.getY() < item.getPosition().getY())
+					if(character.position.getY() + character.velocity.getY() < item.position.getY())
 						character.position.setY(item.position.getY() - character.dimension.getHeight());
 					character.velocity.setY(0);
 					if(character.jump) {
@@ -44,7 +44,7 @@ public class Physics extends Thread implements Runnable{
 					character.position.setY(character.position.getY() + character.velocity.getY() / 11);
 				}
 				
-				if(character.getPosition().getY() + character.dimension.getHeight() - 1 > item.position.getY())
+				if(character.position.getY() + character.dimension.getHeight() - 1 > item.position.getY())
 					if(character.position.getY() < item.position.getY() + item.dimension.getHeight()) {
 						if(Math.abs((character.position.getX() + character.dimension.getWidth() + character.velocity.getX()) - item.position.getX()) < character.moveSpeed.getSpeed())
 							character.position.setX(character.position.getX() - ((character.position.getX() + character.dimension.getWidth() + character.velocity.getX()) - item.position.getX()));

@@ -5,7 +5,7 @@ public class Player extends Character {
 		this.moveSpeed = new Speed(1);
 		this.jumpSpeed = new Speed(1);
 		this.velocity = new Velocity(0, 0);
-		this.setPosition(position);
-		this.setDimension(dimension);
+		this.position = position;
+		this.dimension = dimension;
 	}
 }

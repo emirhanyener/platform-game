@@ -25,26 +25,14 @@ public class Object{
 		this.dimension = new Dimension();
 		this.color = Setting.DEFAULT_COLOR;
 	}
-
-	public Dimension getDimension() {
-		return dimension;
-	}
-	public Position getPosition() {
-		return position;
-	}
+	
 	public Color getColor() {
 		return color;
 	}
 	public boolean isAbstract() {
 		return this._isAbstract;
 	}
-	
-	public void setDimension(Dimension dimension) {
-		this.dimension = dimension;
-	}
-	public void setPosition(Position position) {
-		this.position = position;
-	}
+
 	public void setColor(Color color) {
 		this.color = color;
 	}
