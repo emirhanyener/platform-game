@@ -36,7 +36,6 @@ public class Physics extends Thread implements Runnable{
 					character.velocity.setY(0);
 					if(character.jump) {
 						character.velocity.setY(-character.jumpSpeed.getSpeed());
-						character.jump = false;
 					}
 				}
 				else {
