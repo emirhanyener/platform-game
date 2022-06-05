@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
@@ -27,6 +28,15 @@ public class Canvas extends JPanel{
 		for(Object item : objects) {
 			g.setColor(item.getColor());
 			g.fillRect((int)item.position.getX() - (int)camera.getPosition().getX(), (int)item.position.getY() - (int)camera.getPosition().getY(), item.dimension.getWidth(), item.dimension.getHeight());
+		}
+		int i = 0;
+		for(String alert : Alert.getInstance().getAlerts()) {
+			i++;
+			if(i == Alert.getInstance().getIndex())
+				g.setColor(Color.RED);
+			else
+				g.setColor(Color.DARK_GRAY);
+			g.drawString(alert, 10, i * 15);
 		}
 	}
 }
