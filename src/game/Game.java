@@ -20,6 +20,7 @@ public class Game extends JFrame implements Runnable{
 		setBounds(Setting.WINDOW_POSITION_X, Setting.WINDOW_POSITION_Y, Setting.WINDOW_WIDTH, Setting.WINDOW_HEIGHT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
+		addMouseListener(MousePosition.getInstance());
 
 		Player player1 = new Player(new Position(50, 300), new Dimension(30, 30));
 		player1.setColor(new Color(0, 100, 200));
@@ -51,7 +52,6 @@ public class Game extends JFrame implements Runnable{
 		
 		Thread th1 = new Thread(this);
 		new Physics(this.objects, player1);
-		//new Physics(this.objects, player2);
 		th1.start();
 	}
 	
