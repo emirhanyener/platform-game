@@ -30,30 +30,15 @@ public class MousePosition implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		this.position.setX(camera.getRawPosition().getX() + e.getX());
 		this.position.setY(camera.getRawPosition().getY() + e.getY());
-		Alert.getInstance().addAlert("x = " + this.position.getX() + ", y = " + this.position.getY());
+		Alert.getInstance().setAlertRow(2, "Mouse Position: x = " + this.position.getX() + ", y = " + this.position.getY());
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void mouseEntered(MouseEvent e) {}
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void mouseExited(MouseEvent e) {}
 	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void mousePressed(MouseEvent e) {}
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseReleased(MouseEvent e) {}
 }

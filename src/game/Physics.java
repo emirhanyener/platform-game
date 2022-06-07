@@ -56,6 +56,9 @@ public class Physics extends Thread implements Runnable{
 			if(isMovable)
 				character.position.setX(character.position.getX() + character.velocity.getX());
 			isMovable = true;
+
+			Alert.getInstance().setAlertRow(0, "Position: x = " + this.character.position.getX() + ", y = " + this.character.position.getY());
+			Alert.getInstance().setAlertRow(1, "Velocity: x = " + this.character.velocity.getX() + ", y = " + this.character.velocity.getY());
 		}
 	}
 }

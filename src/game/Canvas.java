@@ -32,10 +32,7 @@ public class Canvas extends JPanel{
 		int i = 0;
 		for(String alert : Alert.getInstance().getAlerts()) {
 			i++;
-			if(i == Alert.getInstance().getIndex())
-				g.setColor(Color.RED);
-			else
-				g.setColor(Color.DARK_GRAY);
+			g.setColor(Color.RED);
 			g.drawString(alert, 10, i * 15);
 		}
 	}

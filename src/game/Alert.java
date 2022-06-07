@@ -6,10 +6,10 @@ public class Alert {
 	private int index;
 	
 	private Alert() {
-		this.list = new String[3];
-		this.list[0] = "";
-		this.list[1] = "";
-		this.list[2] = "";
+		this.list = new String[Setting.MAX_ALERT_NUMBER];
+		for(int i = 0; i < Setting.MAX_ALERT_NUMBER; i++) {
+			list[i] = "";
+		}
 		
 		this.index = 0;
 	}
@@ -21,10 +21,15 @@ public class Alert {
 	}
 	
 	public void addAlert(String value) {
-		if(this.index == 3)
+		if(this.index == Setting.MAX_ALERT_NUMBER)
 			this.index = 0;
 		list[index] = value;
 		this.index++;
+	}
+	
+	public void setAlertRow(int row, String newValue) {
+		if(row < Setting.MAX_ALERT_NUMBER)
+			list[row] = newValue;
 	}
 	
 	public String[] getAlerts() {
