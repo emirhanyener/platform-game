@@ -8,13 +8,20 @@ public class MousePosition implements MouseListener{
 	private static Position position = null;
 	private static MousePosition mousePosition = null;
 	private static Camera camera = null;
+	
 	private MousePosition() {
-		position = new Position();
+		this.position = new Position();
 	}
 	
 	public static MousePosition getInstance() {
-		if(mousePosition == null)
-			mousePosition = new MousePosition();
+		if(mousePosition == null) {
+			synchronized (MousePosition.class) {
+				if(mousePosition == null) {
+					mousePosition = new MousePosition();
+				}
+			}
+		}
+		
 		return mousePosition;
 	}
 	
