@@ -2,7 +2,10 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
+import java.util.Timer;
 
 import javax.swing.JPanel;
 
@@ -10,11 +13,16 @@ public class Canvas extends JPanel{
 	private LinkedList<Object> objects;
 	private LinkedList<Player> players;
 	private Camera camera;
+	private int FPSCounter;
+	private int FPS;
+	private int lastTime;
 	
 	public Canvas(LinkedList<Object> objects, LinkedList<Player> players, Camera camera) {
 		this.objects = objects;
 		this.players = players;
 		this.camera = camera;
+		this.FPS = 0;
+		this.lastTime = 0;
 	}
 	
 	@Override
@@ -34,6 +42,16 @@ public class Canvas extends JPanel{
 			i++;
 			g.setColor(Color.RED);
 			g.drawString(alert, 10, i * 15);
+		}
+		if(Setting.IS_FPS_ACTIVE) {
+			if(LocalDateTime.now().getSecond() != lastTime) {
+				FPS = FPSCounter;
+				FPSCounter = 0;
+				lastTime = LocalDateTime.now().getSecond();
+			}
+			FPSCounter++;
+			g.setColor(Color.BLACK);
+			g.drawString("FPS: " + FPS, Setting.WINDOW_WIDTH - 55, 15);
 		}
 	}
 }
