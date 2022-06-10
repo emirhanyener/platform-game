@@ -6,8 +6,8 @@ public class Alert {
 	private int index;
 	
 	private Alert() {
-		this.list = new String[Setting.MAX_ALERT_NUMBER];
-		for(int i = 0; i < Setting.MAX_ALERT_NUMBER; i++) {
+		this.list = new String[Setting.MAX_ALERT_NUMBER + 1];
+		for(int i = 0; i < Setting.MAX_ALERT_NUMBER + 1; i++) {
 			list[i] = "";
 		}
 		
