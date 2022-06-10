@@ -6,4 +6,5 @@ public class Character extends Object{
 	public Velocity velocity;
 	public boolean gravity = true;
 	public boolean jump = false;
+	public boolean down = false;
 }

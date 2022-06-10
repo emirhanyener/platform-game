@@ -9,6 +9,7 @@ public class PlayerControl implements KeyListener{
 	private boolean right = false;
 	private boolean left = false;
 	private boolean jump = false;
+	private boolean down = false;
 	
 	public PlayerControl(LinkedList<Player> players) {
 		this.players = players;
@@ -16,27 +17,42 @@ public class PlayerControl implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			this.right = true;
+		if(e != null) {
+			if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				this.right = true;
+			}
+			if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+				this.left = true;
+			}
+			if(e.getKeyCode() == KeyEvent.VK_UP) {
+				this.jump = true;
+			}
+			if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+				this.down = true;
+			}
 		}
-		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			this.left = true;
+		
+		if(this.right && this.left) {
+			for(Player item : players)
+				item.velocity.setX(0);
 		}
-		if(e.getKeyCode() == KeyEvent.VK_UP) {
-			this.jump = true;
-		}
-
-		if(this.right) {
+		else if(this.right) {
 			for(Player item : players)
 				item.velocity.setX(item.moveSpeed.getSpeed());
 		}
-		if(this.left) {
+		else if(this.left) {
 			for(Player item : players)
 				item.velocity.setX(-item.moveSpeed.getSpeed());
 		}
+
 		if(this.jump) {
 			for(Player item : players) {
 				item.jump = true;
+			}
+		}
+		if(this.down) {
+			for(Player item : players) {
+				item.down = true;
 			}
 		}
 	}
@@ -58,6 +74,13 @@ public class PlayerControl implements KeyListener{
 				item.jump = false;
 			this.jump = false;
 		}
+		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			for(Player item : players)
+				item.down = false;
+			this.down = false;
+		}
+		
+		keyPressed(null);
 	}
 
 	@Override
