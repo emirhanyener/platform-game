@@ -2,6 +2,8 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -11,15 +13,13 @@ import javax.swing.JPanel;
 
 public class Canvas extends JPanel{
 	private LinkedList<Object> objects;
-	private LinkedList<Player> players;
 	private Camera camera;
 	private int FPSCounter;
 	private int FPS;
 	private int lastTime;
 	
-	public Canvas(LinkedList<Object> objects, LinkedList<Player> players, Camera camera) {
+	public Canvas(LinkedList<Object> objects, Camera camera) {
 		this.objects = objects;
-		this.players = players;
 		this.camera = camera;
 		this.FPS = 0;
 		this.lastTime = 0;
@@ -29,13 +29,19 @@ public class Canvas extends JPanel{
 	public void paint(Graphics g) {
 		g.setColor(Setting.BACKGROUND_COLOR);
 		g.fillRect(0, 0, Setting.WINDOW_WIDTH, Setting.WINDOW_HEIGHT);
-		for(Player item : players) {
-			g.setColor(item.getColor());
-			g.fillOval((int)item.position.getX() - (int)camera.getPosition().getX(), (int)item.position.getY() - (int)camera.getPosition().getY(), item.dimension.getWidth(), item.dimension.getHeight());
-		}
+		
 		for(Object item : objects) {
 			g.setColor(item.getColor());
-			g.fillRect((int)item.position.getX() - (int)camera.getPosition().getX(), (int)item.position.getY() - (int)camera.getPosition().getY(), item.dimension.getWidth(), item.dimension.getHeight());
+			if(item.getImage() == null)			
+				g.fillRect((int)item.position.getX() - (int)camera.getPosition().getX(), (int)item.position.getY() - (int)camera.getPosition().getY(), item.dimension.getWidth(), item.dimension.getHeight());
+			else
+				g.drawImage(item.getImage(), (int)item.position.getX() - (int)camera.getPosition().getX(), (int)item.position.getY() - (int)camera.getPosition().getY(), item.dimension.getWidth(), item.dimension.getHeight(), item.getColor(), new ImageObserver() {
+					@Override
+					public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
+						// TODO Auto-generated method stub
+						return false;
+					}
+				});
 		}
 		int i = 0;
 		for(String alert : Alert.getInstance().getAlerts()) {

@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Color;
+import java.awt.Image;
 
 public class Object{
 	public Position position;
@@ -8,6 +9,7 @@ public class Object{
 	public Color color;
 	private boolean _isAbstract = false;
 	private TriggerEvent triggerEvent = null;
+	private Image image = null;
 
 	public Object(Position position, Dimension dimension, Color color) {
 		this.position = position;
@@ -20,6 +22,7 @@ public class Object{
 		this.color = color;
 		this._isAbstract = isAbstract;
 	}
+	
 	public Object() {
 		this.position = new Position();
 		this.dimension = new Dimension();
@@ -28,6 +31,9 @@ public class Object{
 	
 	public Color getColor() {
 		return color;
+	}
+	public Image getImage() {
+		return image;
 	}
 	public boolean isAbstract() {
 		return this._isAbstract;
@@ -38,6 +44,9 @@ public class Object{
 	}
 	public void setAbstract(boolean value) {
 		this._isAbstract = value;
+	}
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
 	public void Triggered() {

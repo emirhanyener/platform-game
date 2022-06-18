@@ -25,10 +25,16 @@ public class Game extends JFrame implements Runnable{
 		addKeyListener(new PlayerControl(characterFactory.getProducts()));
 		
 		Thread th1 = new Thread(this);
-		new Physics(objectFactory.getProducts(), characterFactory.getProducts().get(0));
 		th1.start();
 		
-		canvas = new Canvas(objectFactory.getProducts(), characterFactory.getProducts(), new DynamicCamera(characterFactory.getProducts().get(0), new Position(0, -100)));
+		LinkedList<Object> objects = new LinkedList<Object>();
+		objects.addAll(objectFactory.getProducts());
+		objects.addAll(characterFactory.getProducts());
+		
+		
+		new Physics(objectFactory.getProducts(), characterFactory.getProducts().get(0));
+		
+		canvas = new Canvas(objects, new DynamicCamera(characterFactory.getProducts().get(0), new Position(0, -100)));
 		add(canvas, BorderLayout.CENTER);
 		
 		show();
