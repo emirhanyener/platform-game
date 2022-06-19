@@ -22,19 +22,19 @@ public class Game extends JFrame implements Runnable{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		addMouseListener(MousePosition.getInstance());
-		addKeyListener(new PlayerControl(characterFactory.getProducts()));
+		addKeyListener(new PlayerControl(GameObjects.getInstance().getPlayers()));
 		
 		Thread th1 = new Thread(this);
 		th1.start();
 		
 		LinkedList<Object> objects = new LinkedList<Object>();
-		objects.addAll(objectFactory.getProducts());
-		objects.addAll(characterFactory.getProducts());
+		objects.addAll(GameObjects.getInstance().getObjects());
+		objects.addAll(GameObjects.getInstance().getPlayers());
 		
 		
-		new Physics(objectFactory.getProducts(), characterFactory.getProducts().get(0));
+		new Physics(GameObjects.getInstance().getObjects(), GameObjects.getInstance().getPlayers().get(0));
 		
-		canvas = new Canvas(objects, new DynamicCamera(characterFactory.getProducts().get(0), new Position(0, -100)));
+		canvas = new Canvas(objects, new DynamicCamera(GameObjects.getInstance().getPlayers().get(0), new Position(0, -100)));
 		add(canvas, BorderLayout.CENTER);
 		
 		show();
