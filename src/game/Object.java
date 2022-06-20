@@ -49,7 +49,7 @@ public class Object{
 		this.image = image;
 	}
 
-	public void Triggered() {
+	public void Triggered(Object object) {
 		this.triggerEvent.OnTriggered();
 	}
 	public void SetTriggerEvent(TriggerEvent trigger) {
