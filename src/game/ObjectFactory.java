@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.LinkedList;
 
 import object.JumpBuffObject;
+import object.SpeedBuffObject;
 import util.Dimension;
 import util.Factory;
 import util.Object;
@@ -28,6 +29,7 @@ public class ObjectFactory extends Factory{
 			}
 		});
 		GameObjects.getInstance().addObject(object);
-		GameObjects.getInstance().addObject(new JumpBuffObject(new Position(500, 0), 2));
+		GameObjects.getInstance().addObject(new JumpBuffObject(new Position(200, 460), 2));
+		GameObjects.getInstance().addObject(new SpeedBuffObject(new Position(250, 460), 2));
 	}
 }
