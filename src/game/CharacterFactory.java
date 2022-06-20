@@ -8,6 +8,11 @@ import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
+import util.Dimension;
+import util.Factory;
+import util.Player;
+import util.Position;
+
 public class CharacterFactory extends Factory{
 
 	@Override

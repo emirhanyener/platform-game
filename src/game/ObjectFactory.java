@@ -3,6 +3,13 @@ package game;
 import java.awt.Color;
 import java.util.LinkedList;
 
+import object.JumpBuffObject;
+import util.Dimension;
+import util.Factory;
+import util.Object;
+import util.Position;
+import util.TriggerEvent;
+
 public class ObjectFactory extends Factory{
 	@Override
 	public void createProducts() {
@@ -21,5 +28,6 @@ public class ObjectFactory extends Factory{
 			}
 		});
 		GameObjects.getInstance().addObject(object);
+		GameObjects.getInstance().addObject(new JumpBuffObject(new Position(500, 0), 2));
 	}
 }

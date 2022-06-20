@@ -1,4 +1,4 @@
-package game;
+package util;
 
 public class Speed {
 	private float speed;

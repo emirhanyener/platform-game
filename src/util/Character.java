@@ -1,4 +1,4 @@
-package game;
+package util;
 
 public class Character extends Object{
 	public Speed moveSpeed;

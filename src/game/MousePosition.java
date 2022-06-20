@@ -4,6 +4,10 @@ import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import util.Alert;
+import util.Camera;
+import util.Position;
+
 public class MousePosition implements MouseListener{
 	private static Position position = null;
 	private static MousePosition mousePosition = null;

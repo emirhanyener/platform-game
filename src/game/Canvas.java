@@ -11,6 +11,10 @@ import java.util.Timer;
 
 import javax.swing.JPanel;
 
+import util.Alert;
+import util.Camera;
+import util.Object;
+
 public class Canvas extends JPanel{
 	private LinkedList<Object> objects;
 	private Camera camera;
@@ -23,6 +27,10 @@ public class Canvas extends JPanel{
 		this.camera = camera;
 		this.FPS = 0;
 		this.lastTime = 0;
+	}
+	
+	public void setObjects(LinkedList<Object> objects) {
+		this.objects = objects;
 	}
 	
 	@Override

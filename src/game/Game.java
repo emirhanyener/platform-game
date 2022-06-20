@@ -10,6 +10,11 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import util.DynamicCamera;
+import util.Object;
+import util.Physics;
+import util.Position;
+
 public class Game extends JFrame implements Runnable{
 	private Canvas canvas;
 	
@@ -26,7 +31,7 @@ public class Game extends JFrame implements Runnable{
 		
 		Thread th1 = new Thread(this);
 		th1.start();
-		
+
 		LinkedList<Object> objects = new LinkedList<Object>();
 		objects.addAll(GameObjects.getInstance().getObjects());
 		objects.addAll(GameObjects.getInstance().getPlayers());
@@ -41,6 +46,10 @@ public class Game extends JFrame implements Runnable{
 	}
 	
 	public void render() {
+		LinkedList<Object> objects = new LinkedList<Object>();
+		objects.addAll(GameObjects.getInstance().getObjects());
+		objects.addAll(GameObjects.getInstance().getPlayers());
+		canvas.setObjects(objects);
 		canvas.repaint();
 	}
 

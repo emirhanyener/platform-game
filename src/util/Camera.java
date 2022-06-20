@@ -1,4 +1,7 @@
-package game;
+package util;
+
+import game.MousePosition;
+import game.Setting;
 
 public class Camera {
 	protected Position position;

@@ -1,4 +1,6 @@
-package game;
+package util;
+
+import game.Setting;
 
 public class Alert {
 	private static Alert alert = null;

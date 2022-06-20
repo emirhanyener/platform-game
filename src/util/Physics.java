@@ -1,7 +1,9 @@
-package game;
+package util;
 
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
+
+import game.Setting;
 
 public class Physics extends Thread implements Runnable{
 	private LinkedList<Object> objects;

@@ -1,4 +1,4 @@
-package game;
+package util;
 
 public class Player extends Character {
 	public Player(Position position, Dimension dimension) {

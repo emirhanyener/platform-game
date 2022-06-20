@@ -1,4 +1,6 @@
-package game;
+package util;
+
+import game.Setting;
 
 public class DynamicCamera extends Camera{
 	private Position firstPosition;

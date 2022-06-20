@@ -2,6 +2,9 @@ package game;
 
 import java.util.LinkedList;
 
+import util.Object;
+import util.Player;
+
 public class GameObjects {
 	private static volatile GameObjects instance;
 	private LinkedList<Object> objects = null;

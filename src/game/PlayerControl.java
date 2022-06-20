@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.LinkedList;
 
+import util.Player;
+
 public class PlayerControl implements KeyListener{
 	private LinkedList<Player> players;
 	private boolean right = false;
