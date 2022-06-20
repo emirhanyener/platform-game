@@ -1,5 +1,6 @@
 package object;
 import java.awt.Color;
+import java.awt.Image;
 
 import util.Dimension;
 import util.Object;
@@ -13,8 +14,8 @@ public class JumpBuffObject extends Object{
 	public JumpBuffObject(Position position, float jumpMultipler) {
 		this.position = position;
 		this.dimension = new Dimension(30, 30);
+		this.setAbstract(true);
 		this.color = Color.BLUE;
-		this._isAbstract = true;
 		this.multipler = jumpMultipler;
 	}
 	

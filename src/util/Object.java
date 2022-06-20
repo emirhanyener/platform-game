@@ -10,7 +10,7 @@ public class Object{
 	public Position position;
 	public Dimension dimension;
 	public Color color;
-	protected boolean _isAbstract = false;
+	private boolean _isAbstract = false;
 	private TriggerEvent triggerEvent = null;
 	private Image image = null;
 
