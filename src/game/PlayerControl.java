@@ -20,16 +20,16 @@ public class PlayerControl implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e != null) {
-			if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
 				this.right = true;
 			}
-			if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
 				this.left = true;
 			}
-			if(e.getKeyCode() == KeyEvent.VK_UP) {
+			if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
 				this.jump = true;
 			}
-			if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
 				this.down = true;
 			}
 		}
@@ -61,22 +61,22 @@ public class PlayerControl implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
 			for(Player item : players)
 				item.velocity.setX(0);
 			this.right = false;
 		}
-		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+		if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
 			for(Player item : players)
 				item.velocity.setX(0);
 			this.left = false;
 		}
-		if(e.getKeyCode() == KeyEvent.VK_UP) {
+		if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
 			for(Player item : players)
 				item.jump = false;
 			this.jump = false;
 		}
-		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+		if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
 			for(Player item : players)
 				item.down = false;
 			this.down = false;
