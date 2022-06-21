@@ -11,6 +11,7 @@ public class Setting {
 	public static final Color DEFAULT_COLOR = new Color(255, 0, 255);
 	public static final Color BACKGROUND_COLOR = new Color(181, 238, 255);
 	public static final long REFRESH_RATE = 10;
+	public static final boolean IS_ALERT_ACTIVE = false;
 	public static final int MAX_ALERT_NUMBER = 4;
 	public static final boolean IS_FPS_ACTIVE = true;
 }

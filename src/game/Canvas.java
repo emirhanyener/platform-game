@@ -46,16 +46,17 @@ public class Canvas extends JPanel{
 				g.drawImage(item.getImage(), (int)item.position.getX() - (int)camera.getPosition().getX(), (int)item.position.getY() - (int)camera.getPosition().getY(), item.dimension.getWidth(), item.dimension.getHeight(), item.getColor(), new ImageObserver() {
 					@Override
 					public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
-						// TODO Auto-generated method stub
 						return false;
 					}
 				});
 		}
-		int i = 0;
-		for(String alert : Alert.getInstance().getAlerts()) {
-			i++;
-			g.setColor(Color.RED);
-			g.drawString(alert, 10, i * 15);
+		if(Setting.IS_ALERT_ACTIVE) {
+			int i = 0;
+			for(String alert : Alert.getInstance().getAlerts()) {
+				i++;
+				g.setColor(Color.RED);
+				g.drawString(alert, 10, i * 15);
+			}
 		}
 		if(Setting.IS_FPS_ACTIVE) {
 			if(LocalDateTime.now().getSecond() != lastTime) {
