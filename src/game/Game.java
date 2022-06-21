@@ -17,6 +17,7 @@ import util.Position;
 
 public class Game extends JFrame implements Runnable{
 	private Canvas canvas;
+	Physics physics;
 	
 	public Game() {
 		ObjectFactory objectFactory = new ObjectFactory();
@@ -28,21 +29,19 @@ public class Game extends JFrame implements Runnable{
 		setResizable(false);
 		addMouseListener(MousePosition.getInstance());
 		addKeyListener(new PlayerControl(GameObjects.getInstance().getPlayers()));
-		
-		Thread th1 = new Thread(this);
-		th1.start();
 
 		LinkedList<Object> objects = new LinkedList<Object>();
 		objects.addAll(GameObjects.getInstance().getObjects());
 		objects.addAll(GameObjects.getInstance().getPlayers());
 		
-		
-		new Physics(GameObjects.getInstance().getObjects(), GameObjects.getInstance().getPlayers().get(0));
+		physics = new Physics();
+		physics.addCharacter(GameObjects.getInstance().getPlayers().get(0));
 		
 		canvas = new Canvas(objects, new DynamicCamera(GameObjects.getInstance().getPlayers().get(0), new Position(0, -100)));
 		add(canvas, BorderLayout.CENTER);
 		
 		show();
+		run();
 	}
 	
 	public void render() {
@@ -66,7 +65,7 @@ public class Game extends JFrame implements Runnable{
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
+			physics.calculate();
 			render();
 		}
 	}

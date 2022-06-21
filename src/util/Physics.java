@@ -3,29 +3,28 @@ package util;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
+import game.GameObjects;
 import game.Setting;
 
-public class Physics extends Thread implements Runnable{
-	private LinkedList<Object> objects;
-	private Character character;
+public class Physics{
+	private LinkedList<Character> characters;
 	private boolean isMovable = true;
+	private boolean isGravityControlled = false;
 	
-	public Physics(LinkedList<Object> objects, Character character) {
-		this.objects = objects;
-		this.character = character;
-		this.start();
+	public Physics() {
+		characters = new LinkedList<Character>();
+	}
+	
+	public void addCharacter(Character item) {
+		characters.add(item);
 	}
 
-	@Override
-	public void run() {
-		while(true) {
-			try {
-				TimeUnit.MILLISECONDS.sleep(Setting.REFRESH_RATE);
-			} 
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			for(Object item : objects) {
+	public void calculate() {
+		for(int p = 0; p < GameObjects.getInstance().getPlayers().size(); p++) {
+			Character character = GameObjects.getInstance().getPlayers().get(p);
+			for(int o = 0; o < GameObjects.getInstance().getObjects().size(); o++) {
+				Object item = GameObjects.getInstance().getObjects().get(o);
+				
 				if(character.position.getX() + character.dimension.getWidth() > item.position.getX() && character.position.getX() < item.position.getX() + item.dimension.getWidth() && character.position.getY() + character.velocity.getY() + character.dimension.getHeight() > item.position.getY() && character.position.getY() + character.velocity.getY() < item.position.getY() + item.dimension.getHeight())
 				{	
 					if(!item.isAbstract()) {
@@ -39,8 +38,7 @@ public class Physics extends Thread implements Runnable{
 					}
 				}
 				else {
-					character.velocity.setY(character.velocity.getY() + Setting.GRAVITY);
-					character.position.setY(character.position.getY() + character.velocity.getY() / 15);
+					isGravityControlled = true;
 				}
 				
 				if(character.position.getY() + character.dimension.getHeight() - 1 > item.position.getY())
@@ -65,12 +63,15 @@ public class Physics extends Thread implements Runnable{
 					}
 			}
 			
-			if(isMovable)
+			if(isMovable) {
 				character.position.setX(character.position.getX() + character.velocity.getX());
+			}
+			if(isGravityControlled) {
+				character.velocity.setY(character.velocity.getY() + Setting.GRAVITY * 6);
+				character.position.setY(character.position.getY() + character.velocity.getY());
+			}
 			isMovable = true;
-
-			Alert.getInstance().setAlertRow(0, "Position: x = " + this.character.position.getX() + ", y = " + this.character.position.getY());
-			Alert.getInstance().setAlertRow(1, "Velocity: x = " + this.character.velocity.getX() + ", y = " + this.character.velocity.getY());
+			isGravityControlled = false;
 		}
 	}
 }
