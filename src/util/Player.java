@@ -1,7 +1,8 @@
 package util;
 
 public class Player extends Character {
-	public Player(Position position, Dimension dimension) {
+	public Player(String name, Position position, Dimension dimension) {
+		this.name = name;
 		this.moveSpeed = new Speed(1);
 		this.jumpSpeed = new Speed(1);
 		this.velocity = new Velocity(0, 0);
