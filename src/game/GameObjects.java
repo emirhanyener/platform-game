@@ -33,6 +33,13 @@ public class GameObjects {
 	public void removeObject(Object item) {
 		objects.remove(item);
 	}
+	public Object findObject(String name) {
+		for(int i = 0; i < objects.size(); i++) {
+			if(objects.get(i).getName() == name)
+				return objects.get(i);
+		}
+		return null;
+	}
 	public LinkedList<Object> getObjects(){
 		return objects;
 	}
@@ -42,6 +49,13 @@ public class GameObjects {
 	}
 	public void removePlayer(Player item) {
 		players.remove(item);
+	}
+	public Player findPlayer(String name) {
+		for(int i = 0; i < players.size(); i++) {
+			if(players.get(i).getName() == name)
+				return players.get(i);
+		}
+		return null;
 	}
 	public LinkedList<Player> getPlayers(){
 		return players;
