@@ -37,7 +37,7 @@ public class DynamicCamera extends Camera{
 		position = new Position(position.getX() + diffX, position.getY() + diffY);
 
 		position.addX(-Setting.WINDOW_WIDTH / 2 + target.dimension.getWidth());
-		position.addY(-Setting.WINDOW_HEIGHT / 2);
+		position.addY(-Setting.WINDOW_HEIGHT / 2 + target.dimension.getHeight());
 		position.addX(offset.getX());
 		position.addY(offset.getY());
 		

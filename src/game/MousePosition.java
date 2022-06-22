@@ -48,7 +48,7 @@ public class MousePosition implements MouseListener{
 		//---teleport---
 		//GameObjects.getInstance().getPlayers().get(0).position = new Position(this.position.getX(), this.position.getY());
 		//---dynamic create object---
-		GameObjects.getInstance().addObject(new Object("Block",new Position(this.position.getX(), this.position.getY()), new Dimension(50,50), Color.ORANGE));
+		GameObjects.getInstance().addObject(new Object("Block",new Position(this.position.getX() - 25, this.position.getY() - 50), new Dimension(50,50), Color.ORANGE));
 	}
 
 	@Override
